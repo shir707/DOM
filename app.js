@@ -6,10 +6,48 @@ GAME RULES:
 - The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn
 - The first player to reach 100 points on GLOBAL score wins the game
 */
-var scores,roundScore,activePlayser, dice;
+var scores,roundScore,activePlayer;
 scores=[0,0];
 roundScore=0;
-activePlayser=0; //the first player, 1-is the second player
-//the random give me number between 0 to 1, i want from 1 to 6
-dice=Math.floor(Math.random()*6)+1;
-console.log(dice);
+activePlayer=0; 
+
+document.querySelector('.dice').style.display = 'none';
+//initialize the score
+document.getElementById('score-0').textContent='0';
+document.getElementById('score-1').textContent='0';
+document.getElementById('current-0').textContent='0';
+document.getElementById('current-1').textContent='0';
+
+//we want to catch when the user click on the roll button
+document.querySelector('.btn-roll').addEventListener('click', function(){
+    //1.Random number
+    //the random give me number between 0 to 1, i want from 1 to 6
+    var dice=Math.floor(Math.random()*6)+1;
+
+     //2.Display the result
+     var diceDOM = document.querySelector('.dice');
+     diceDOM.style.display='block';
+     diceDOM.src = 'dice-' + dice + '.png';
+
+     //3.Update the round score if the rolled number is not one
+     if(dice!==1){
+         //Add score
+         roundScore+=dice;
+         document.querySelector('#current-' + activePlayer).textContent=roundScore;
+     }
+     else{
+         //Next player and reset the score
+         activePlayer === 0 ? activePlayer=1 : activePlayer=0;
+         roundScore=0;
+         document.querySelector('#current-0').textContent=0;
+         document.querySelector('#current-1').textContent=0;
+         //we need to move the dot that says who is play now. in the html is the active next to the class
+         //the toggle is like to do remove and after add to the "active"
+         document.querySelector('.player-0-panel').classList.toggle('active');
+         document.querySelector('.player-1-panel').classList.toggle('active');
+
+         document.querySelector('.dice').style.display = 'none';
+     }
+
+});
+
