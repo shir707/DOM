@@ -37,9 +37,9 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
      }
      else{
          //Next player and reset the score
-<<<<<<< HEAD
+
         nextPlayer();
-=======
+
          activePlayer === 0 ? activePlayer=1 : activePlayer=0;
          roundScore=0;
          document.querySelector('#current-0').textContent=0;
@@ -50,12 +50,11 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
          document.querySelector('.player-1-panel').classList.toggle('active');
 
          document.querySelector('.dice').style.display = 'none';
->>>>>>> a82762cae19f44b9b0f27a4d86d762af67b33a3a
+
      }
 
 });
 
-<<<<<<< HEAD
 document.querySelector('.btn-hold').addEventListener('click',function(){
     //1.add the current score to the global score
     scores[activePlayer]+=roundScore;
@@ -93,5 +92,4 @@ function nextPlayer(){
 
 }
 
-=======
->>>>>>> a82762cae19f44b9b0f27a4d86d762af67b33a3a
+
