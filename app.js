@@ -33,17 +33,6 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 
        nextPlayer();
 
-        activePlayer === 0 ? activePlayer=1 : activePlayer=0;
-        roundScore=0;
-        document.querySelector('#current-0').textContent=0;
-        document.querySelector('#current-1').textContent=0;
-        //we need to move the dot that says who is play now. in the html is the active next to the class
-        //the toggle is like to do remove and after add to the "active"
-        document.querySelector('.player-0-panel').classList.toggle('active');
-        document.querySelector('.player-1-panel').classList.toggle('active');
-
-        document.querySelector('.dice').style.display = 'none';
-
     }
 
     }
