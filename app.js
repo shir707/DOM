@@ -7,16 +7,8 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game
 */
 var scores,roundScore,activePlayer;
-scores=[0,0];
-roundScore=0;
-activePlayer=0; 
+init();
 
-document.querySelector('.dice').style.display = 'none';
-//initialize the score
-document.getElementById('score-0').textContent='0';
-document.getElementById('score-1').textContent='0';
-document.getElementById('current-0').textContent='0';
-document.getElementById('current-1').textContent='0';
 
 //we want to catch when the user click on the roll button
 document.querySelector('.btn-roll').addEventListener('click', function(){
@@ -92,4 +84,26 @@ function nextPlayer(){
 
 }
 
-
+function init(){
+    scores=[0,0];
+    activePlayer=0;
+    roundScore=0;
+    document.querySelector('.dice').style.display = 'none';
+//initialize the score
+   document.getElementById('score-0').textContent='0';
+   document.getElementById('score-1').textContent='0';
+   document.getElementById('current-0').textContent='0';
+   document.getElementById('current-1').textContent='0';
+   //get the name from winner to player 1 and 2
+   document.getElementById('name-0').textContent='Player 1';
+   document.getElementById('name-1').textContent='Player 2';
+   //removing the winner class
+   document.querySelector('.player-0-panel').classList.remove('winner');
+   document.querySelector('.player-1-panel').classList.remove('winner');
+   document.querySelector('.player-0-panel').classList.remove('active');
+   document.querySelector('.player-1-panel').classList.remove('active');
+   //set player 1 to be the active player
+   document.querySelector('.player-0-panel').classList.add('active');
+}
+//by clicking the new game button we call the init function
+document.querySelector('.btn-new').addEventListener('click',init);
